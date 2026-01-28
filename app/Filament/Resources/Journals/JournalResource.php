@@ -18,7 +18,7 @@ class JournalResource extends Resource
 {
     protected static ?string $model = Journal::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::DocumentText;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::PencilSquare;
 
     protected static ?string $recordTitleAttribute = 'Journal';
 

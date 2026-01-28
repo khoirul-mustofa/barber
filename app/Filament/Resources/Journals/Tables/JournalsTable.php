@@ -32,7 +32,8 @@ class JournalsTable
 
                 TextColumn::make('created_at')
                     ->dateTime('d M Y')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
