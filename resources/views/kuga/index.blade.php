@@ -40,7 +40,7 @@
     </section>
 
     <!-- MAP & REVIEWS -->
-    <section id="lokasi" class="py-20 bg-white">
+    <section id="lokasi" class="py-20 bg-white dark:bg-emerald-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
             <!-- Map -->
             <div class="w-full">
@@ -57,23 +57,23 @@
             
             <!-- Reviews -->
             <div class="w-full">
-                <div class="bg-gray-50 p-10 rounded-3xl border border-gray-200 shadow-md text-center hover:-translate-y-2 hover:border-yellow-500 hover:shadow-xl transition-all duration-300">
+                <div class="bg-gray-50 dark:bg-emerald-900 p-10 rounded-3xl border border-gray-200 dark:border-emerald-800 shadow-md text-center hover:-translate-y-2 hover:border-yellow-500 hover:shadow-xl transition-all duration-300">
                     <div class="text-yellow-500 text-2xl mb-4">⭐⭐⭐⭐⭐</div>
-                    <h3 class="text-2xl font-bold text-green-900 mb-4 font-heading">Customer Experience</h3>
-                    <p class="italic text-gray-600 text-lg mb-8 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-green-900 dark:text-white mb-4 font-heading">Customer Experience</h3>
+                    <p class="italic text-gray-600 dark:text-emerald-100/80 text-lg mb-8 leading-relaxed">
                         "Potongan rambut paling detail dan rapi di Samarinda. Pelayanan ramah, tempat nyaman, dan sangat profesional!"
                     </p>
                     <div class="flex justify-center gap-12 mb-8">
                         <div class="flex flex-col">
                             <span class="text-4xl font-extrabold text-yellow-500">5.0</span>
-                            <span class="text-xs uppercase tracking-widest text-gray-500 mt-1">Rating</span>
+                            <span class="text-xs uppercase tracking-widest text-gray-500 dark:text-emerald-300 mt-1">Rating</span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-4xl font-extrabold text-yellow-500">200+</span>
-                            <span class="text-xs uppercase tracking-widest text-gray-500 mt-1">Review</span>
+                            <span class="text-xs uppercase tracking-widest text-gray-500 dark:text-emerald-300 mt-1">Review</span>
                         </div>
                     </div>
-                    <a href="https://maps.google.com" target="_blank" class="inline-block px-6 py-3 border border-green-900 text-green-900 rounded-full font-semibold hover:bg-green-900 hover:text-white transition-all duration-300">
+                    <a href="https://maps.google.com" target="_blank" class="inline-block px-6 py-3 border border-green-900 dark:border-yellow-500 text-green-900 dark:text-yellow-500 rounded-full font-semibold hover:bg-green-900 hover:text-white dark:hover:bg-yellow-500 dark:hover:text-emerald-950 transition-all duration-300">
                         Baca Semua Ulasan →
                     </a>
                 </div>
@@ -114,26 +114,26 @@
     </section>
 
     <!-- SERVICES SECTION -->
-    <section id="layanan" class="py-24 bg-white">
+    <section id="layanan" class="py-24 bg-white dark:bg-emerald-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900">
-                    Layanan <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">Premium</span> Kami
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900 dark:text-white">
+                    Layanan <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 dark:from-yellow-400 dark:to-yellow-600">Premium</span> Kami
                 </h2>
-                <p class="text-gray-500 text-lg">Pilihan perawatan terbaik untuk penampilan maksimal Anda</p>
+                <p class="text-gray-500 dark:text-emerald-200 text-lg">Pilihan perawatan terbaik untuk penampilan maksimal Anda</p>
             </div>
 
             @foreach ($categories as $category)
-                <h3 class="mt-12 mb-8 text-2xl font-bold text-green-900 border-l-4 border-green-900 pl-4 font-heading">
+                <h3 class="mt-12 mb-8 text-2xl font-bold text-green-900 dark:text-white border-l-4 border-green-900 dark:border-yellow-500 pl-4 font-heading">
                     {{ $category->name }}
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach ($category->services as $service)
-                        <div class="group relative bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:border-yellow-500 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                        <div class="group relative bg-white dark:bg-emerald-900 p-8 rounded-3xl border border-gray-200 dark:border-emerald-800 shadow-sm hover:border-yellow-500 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
                             <div class="text-4xl mb-4 grayscale group-hover:grayscale-0 transition-all duration-300">{{ $service->emoji }}</div>
-                            <h3 class="text-xl font-bold text-green-900 mb-2 font-heading">{{ $service->name }}</h3>
-                            <p class="text-gray-500 mb-4 text-sm leading-relaxed min-h-[40px]">{{ $service->description }}</p>
-                            <p class="text-lg font-bold text-green-900">
+                            <h3 class="text-xl font-bold text-green-900 dark:text-white mb-2 font-heading">{{ $service->name }}</h3>
+                            <p class="text-gray-500 dark:text-emerald-200/70 mb-4 text-sm leading-relaxed min-h-[40px]">{{ $service->description }}</p>
+                            <p class="text-lg font-bold text-green-900 dark:text-yellow-500">
                                 Rp {{ number_format($service->price, 0, ',', '.') }}
                             </p>
                         </div>
@@ -144,13 +144,13 @@
     </section>
 
     <!-- GALLERY SECTION -->
-    <section id="galeri" class="py-24 bg-white">
+    <section id="galeri" class="py-24 bg-white dark:bg-emerald-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900">
-                    Galeri <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">Hasil Karya</span> Kami
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900 dark:text-white">
+                    Galeri <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 dark:from-yellow-400 dark:to-yellow-600">Hasil Karya</span> Kami
                 </h2>
-                <p class="text-gray-500 text-lg">Lihat transformasi gaya yang telah kami ciptakan</p>
+                <p class="text-gray-500 dark:text-emerald-200 text-lg">Lihat transformasi gaya yang telah kami ciptakan</p>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -170,22 +170,22 @@
     </section>
 
     <!-- PRICING SECTION -->
-    <section id="harga" class="py-24 bg-gray-50">
+    <section id="harga" class="py-24 bg-gray-50 dark:bg-emerald-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900">
-                    Paket <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">Spesial</span>
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900 dark:text-white">
+                    Paket <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 dark:from-yellow-400 dark:to-yellow-600">Spesial</span>
                 </h2>
-                <p class="text-gray-500 text-lg">Pilih paket terbaik untuk kebutuhan grooming Anda</p>
+                <p class="text-gray-500 dark:text-emerald-200 text-lg">Pilih paket terbaik untuk kebutuhan grooming Anda</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Basic -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 text-center flex flex-col">
-                    <h3 class="text-xl font-bold text-green-900 mb-4 font-heading">Basic Package</h3>
-                    <div class="text-4xl font-extrabold text-yellow-600 mb-2">150K</div>
-                    <p class="text-sm text-gray-500 mb-8 uppercase tracking-widest">Per Kunjungan</p>
-                    <ul class="space-y-4 text-gray-600 text-left mb-8 flex-1">
+                <div class="bg-white dark:bg-emerald-900 p-8 rounded-3xl border border-gray-200 dark:border-emerald-800 shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 text-center flex flex-col">
+                    <h3 class="text-xl font-bold text-green-900 dark:text-white mb-4 font-heading">Basic Package</h3>
+                    <div class="text-4xl font-extrabold text-yellow-600 dark:text-yellow-500 mb-2">150K</div>
+                    <p class="text-sm text-gray-500 dark:text-emerald-200 mb-8 uppercase tracking-widest">Per Kunjungan</p>
+                    <ul class="space-y-4 text-gray-600 dark:text-emerald-100 text-left mb-8 flex-1">
                         @foreach(['Classic Haircut', 'Hair Wash & Tonic', 'Hot Towel Treatment', 'Basic Styling', 'Complimentary Coffee'] as $feature)
                             <li class="flex items-center gap-3">
                                 <span class="text-green-500 text-lg">✓</span> {{ $feature }}
@@ -202,10 +202,10 @@
                     <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-500 text-white text-xs font-bold px-4 py-1 rounded-full tracking-widest shadow-md">
                         MOST POPULAR
                     </span>
-                    <h3 class="text-xl font-bold text-green-900 mb-4 font-heading">Premium Package</h3>
-                    <div class="text-5xl font-extrabold text-yellow-600 mb-2">275K</div>
-                    <p class="text-sm text-gray-500 mb-8 uppercase tracking-widest">Per Kunjungan</p>
-                    <ul class="space-y-4 text-gray-600 text-left mb-8 flex-1">
+                    <h3 class="text-xl font-bold text-green-900 dark:text-white mb-4 font-heading">Premium Package</h3>
+                    <div class="text-5xl font-extrabold text-yellow-600 dark:text-yellow-500 mb-2">275K</div>
+                    <p class="text-sm text-gray-500 dark:text-emerald-200 mb-8 uppercase tracking-widest">Per Kunjungan</p>
+                    <ul class="space-y-4 text-gray-600 dark:text-emerald-100 text-left mb-8 flex-1">
                         @foreach(['Premium Haircut & Styling', 'Beard Grooming', 'Hair Treatment', 'Head Massage (15 menit)', 'Premium Hair Products', 'Complimentary Beverage'] as $feature)
                             <li class="flex items-center gap-3">
                                 <span class="text-yellow-500 text-lg">✓</span> <span class="font-medium text-gray-800">{{ $feature }}</span>
@@ -218,11 +218,11 @@
                 </div>
 
                 <!-- Ultimate -->
-                <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 text-center flex flex-col">
-                    <h3 class="text-xl font-bold text-green-900 mb-4 font-heading">Ultimate Package</h3>
-                    <div class="text-4xl font-extrabold text-yellow-600 mb-2">450K</div>
-                    <p class="text-sm text-gray-500 mb-8 uppercase tracking-widest">Per Kunjungan</p>
-                    <ul class="space-y-4 text-gray-600 text-left mb-8 flex-1">
+                <div class="bg-white dark:bg-emerald-900 p-8 rounded-3xl border border-gray-200 dark:border-emerald-800 shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all duration-300 text-center flex flex-col">
+                    <h3 class="text-xl font-bold text-green-900 dark:text-white mb-4 font-heading">Ultimate Package</h3>
+                    <div class="text-4xl font-extrabold text-yellow-600 dark:text-yellow-500 mb-2">450K</div>
+                    <p class="text-sm text-gray-500 dark:text-emerald-200 mb-8 uppercase tracking-widest">Per Kunjungan</p>
+                    <ul class="space-y-4 text-gray-600 dark:text-emerald-100 text-left mb-8 flex-1">
                         @foreach(['Luxury Haircut & Styling', 'Complete Beard Care', 'Hair Coloring/Treatment', 'Full Body Massage (30 menit)', 'Facial Treatment', 'Take Home Products', 'Priority Booking'] as $feature)
                             <li class="flex items-center gap-3">
                                 <span class="text-green-500 text-lg">✓</span> {{ $feature }}
@@ -238,7 +238,7 @@
     </section>
 
     <!-- BLOG/JOURNAL SECTION -->
-    <section id="journal" class="py-24 bg-white" x-data="{
+    <section id="journal" class="py-24 bg-white dark:bg-emerald-900 transition-colors duration-300" x-data="{
         scrollContainer: null,
         init() {
             this.scrollContainer = this.$refs.journalContainer;
@@ -252,24 +252,24 @@
     }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900">
-                    Style <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">Journal</span>
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900 dark:text-white">
+                    Style <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 dark:from-yellow-400 dark:to-yellow-600">Journal</span>
                 </h2>
-                <p class="text-gray-500 text-lg">Inspirasi & Tips Grooming Terkini</p>
+                <p class="text-gray-500 dark:text-emerald-200 text-lg">Inspirasi & Tips Grooming Terkini</p>
             </div>
 
             <!-- Slider Container -->
             <div class="relative group">
                 <div class="flex gap-8 overflow-x-auto pb-8 snap-x scrollbar-hide" x-ref="journalContainer">
                     @foreach ($journals as $journal)
-                        <div class="min-w-[320px] bg-white rounded-3xl border border-gray-100 shadow-sm hover:translate-y-[-5px] hover:border-yellow-500 hover:shadow-xl transition-all duration-300 overflow-hidden snap-center">
+                        <div class="min-w-[320px] bg-white dark:bg-emerald-950 rounded-3xl border border-gray-100 dark:border-emerald-800 shadow-sm hover:translate-y-[-5px] hover:border-yellow-500 hover:shadow-xl transition-all duration-300 overflow-hidden snap-center">
                             <div class="h-48 overflow-hidden">
                                 <img src="{{ asset('storage/' . $journal->image) }}" alt="{{ $journal->title }}" 
                                     class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-bold text-green-900 mb-2 truncate font-heading">{{ $journal->title }}</h4>
-                                <p class="text-sm text-gray-500 mb-4 line-clamp-2 h-10">{{ $journal->summary }}</p>
+                                <h4 class="text-xl font-bold text-green-900 dark:text-white mb-2 truncate font-heading">{{ $journal->title }}</h4>
+                                <p class="text-sm text-gray-500 dark:text-emerald-200/70 mb-4 line-clamp-2 h-10">{{ $journal->summary }}</p>
                                 <a href="{{ route('journal.view', $journal->title) }}" class="text-green-700 font-bold text-sm hover:text-green-900 inline-flex items-center gap-1 group/link">
                                     Selengkapnya <span class="group-hover/link:translate-x-1 transition-transform">→</span>
                                 </a>
@@ -280,10 +280,10 @@
                 
                 <!-- Controls -->
                 <div class="flex justify-center gap-4 mt-6">
-                    <button @click="scrollPrev" class="w-12 h-12 rounded-full border border-gray-200 bg-white text-gray-700 flex items-center justify-center hover:bg-green-900 hover:text-white hover:border-green-900 transition-all shadow-sm">
+                    <button @click="scrollPrev" class="w-12 h-12 rounded-full border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-700 dark:text-white flex items-center justify-center hover:bg-green-900 hover:text-white hover:border-green-900 dark:hover:bg-yellow-500 dark:hover:text-emerald-900 transition-all shadow-sm">
                         ←
                     </button>
-                    <button @click="scrollNext" class="w-12 h-12 rounded-full border border-gray-200 bg-white text-gray-700 flex items-center justify-center hover:bg-green-900 hover:text-white hover:border-green-900 transition-all shadow-sm">
+                    <button @click="scrollNext" class="w-12 h-12 rounded-full border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-700 dark:text-white flex items-center justify-center hover:bg-green-900 hover:text-white hover:border-green-900 dark:hover:bg-yellow-500 dark:hover:text-emerald-900 transition-all shadow-sm">
                         →
                     </button>
                 </div>
@@ -298,85 +298,117 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="kontak" class="py-24 bg-gray-50">
+    <section id="kontak" class="py-24 bg-gray-50 dark:bg-emerald-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900">
-                    Hubungi <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600">Kami</span>
+                <h2 class="text-3xl sm:text-5xl font-bold mb-4 font-heading text-gray-900 dark:text-white">
+                    Hubungi <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-600 dark:from-yellow-400 dark:to-yellow-600">Kami</span>
                 </h2>
-                <p class="text-gray-500 text-lg">Booking appointment atau tanyakan informasi lebih lanjut</p>
+                <p class="text-gray-500 dark:text-emerald-200 text-lg">Booking appointment atau tanyakan informasi lebih lanjut</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
                 <!-- Contact Info -->
-                <div class="bg-white p-10 rounded-3xl shadow-lg border-t-4 border-green-900">
-                    <h3 class="text-2xl font-bold text-green-900 mb-8 font-heading">Informasi Kontak</h3>
-                    
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-2xl">📍</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">Alamat</h4>
-                                <p class="text-gray-600">Jl. melanti RT. 37. No. 23<br>Palaran Samarinda, 75243</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-2xl">📞</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">Telepon</h4>
-                                <p class="text-gray-600">+62 812 5662 6112</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-2xl">✉️</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">Email</h4>
-                                <p class="text-gray-600">kuga03042022@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-2xl">🕒</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-1">Jam Operasional</h4>
-                                <p class="text-gray-600">Senin - Sabtu: 09.00 - 21.00<br>Minggu: 10.00 - 18.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="bg-white dark:bg-emerald-950 p-10 rounded-3xl shadow-[0_20px_50px_rgba(6,78,59,0.05)] border border-emerald-50 dark:border-emerald-900">
+    <h3 class="text-2xl font-black text-emerald-900 dark:text-white mb-8 font-heading tracking-tight">
+        Informasi Kontak
+    </h3>
+    
+    <div class="space-y-8">
+        {{-- Item Alamat --}}
+        <div class="flex items-start gap-5 group">
+            <div class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-50 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+            <div>
+                <h4 class="font-bold text-emerald-900 dark:text-emerald-50 mb-1">Alamat</h4>
+                <p class="text-gray-500 dark:text-emerald-200/60 leading-relaxed text-sm">
+                    Jl. melanti RT. 37. No. 23<br>
+                    Palaran Samarinda, 75243
+                </p>
+            </div>
+        </div>
 
-                <!-- Contact Form -->
-                <div class="bg-white p-10 rounded-3xl shadow-lg border-t-4 border-yellow-500">
-                    <form id="contactForm" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                            <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="Masukkan nomor telepon"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="Masukkan email Anda"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Layanan yang Diminati</label>
-                            <input type="text" id="service" name="service" placeholder="Contoh: Classic Haircut"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tulis pesan atau pertanyaan Anda..."
-                                class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-900 to-green-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            Kirim Pesan
-                        </button>
-                    </form>
+        {{-- Item Telepon --}}
+        <div class="flex items-start gap-5 group">
+            <div class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-50 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+            </div>
+            <div>
+                <h4 class="font-bold text-emerald-900 dark:text-emerald-50 mb-1">Telepon</h4>
+                <p class="text-gray-500 dark:text-emerald-200/60 text-sm font-medium">+62 812 5662 6112</p>
+            </div>
+        </div>
+
+        {{-- Item Email --}}
+        <div class="flex items-start gap-5 group">
+            <div class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-50 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div>
+                <h4 class="font-bold text-emerald-900 dark:text-emerald-50 mb-1">Email</h4>
+                <p class="text-gray-500 dark:text-emerald-200/60 text-sm">kuga03042022@gmail.com</p>
+            </div>
+        </div>
+
+        {{-- Item Jam Operasional --}}
+        <div class="flex items-start gap-5 group">
+            <div class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-50 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div>
+                <h4 class="font-bold text-emerald-900 dark:text-emerald-50 mb-1">Jam Operasional</h4>
+                <div class="text-sm text-gray-500 dark:text-emerald-200/60">
+                    <p><span class="text-emerald-700 dark:text-emerald-400 font-semibold">Senin - Sabtu:</span> 09.00 - 21.00</p>
+                    <p><span class="text-emerald-700 dark:text-emerald-400 font-semibold">Minggu:</span> 10.00 - 18.00</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white dark:bg-emerald-900 p-10 rounded-3xl shadow-[0_20px_50px_rgba(6,78,59,0.05)] border border-emerald-50 dark:border-emerald-900">
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-emerald-200 mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-900 dark:text-white focus:border-green-500 dark:focus:border-yellow-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-yellow-500/50 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-emerald-200 mb-2">Nomor Telepon</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="Masukkan nomor telepon"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-900 dark:text-white focus:border-green-500 dark:focus:border-yellow-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-yellow-500/50 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-emerald-200 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="Masukkan email Anda"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-900 dark:text-white focus:border-green-500 dark:focus:border-yellow-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-yellow-500/50 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 dark:text-emerald-200 mb-2">Layanan yang Diminati</label>
+                                <input type="text" id="service" name="service" placeholder="Contoh: Classic Haircut"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-900 dark:text-white focus:border-green-500 dark:focus:border-yellow-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-yellow-500/50 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-emerald-200 mb-2">Pesan</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tulis pesan atau pertanyaan Anda..."
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-emerald-800 bg-white dark:bg-emerald-950 text-gray-900 dark:text-white focus:border-green-500 dark:focus:border-yellow-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-yellow-500/50 outline-none transition-all"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-900 to-green-700 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
             </div>
         </div>
     </section>
