@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             GalerySeeder::class,
             JournalSeeder::class,
             ServiceCategoriesSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

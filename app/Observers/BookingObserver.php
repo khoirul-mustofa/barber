@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Enums\StatusBookingEnum;
 use App\Models\Booking;
+use App\Models\Setting;
 use App\Services\FonnteService;
 
 class BookingObserver
@@ -14,7 +15,7 @@ class BookingObserver
     public function created(Booking $booking): void
     {
         // Kirim notifikasi ke Admin bahwa ada booking baru
-        $adminPhone = env('ADMIN_PHONE');
+        $adminPhone = Setting::get('ADMIN_PHONE');
 
         if ($adminPhone) {
             $message = "🔔 *BOOKING BARU!*\n\n".

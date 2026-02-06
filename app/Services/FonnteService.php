@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Setting;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -10,16 +11,16 @@ class FonnteService
     /**
      * Kirim pesan WhatsApp menggunakan Fonnte
      *
-     * @param  string  $targets  Nomor HP tujuan (format 08xx atau 628xx)
+     * @param  string  $targets  Nomor HP tujuan (format 08xx,08xx atau 628xx)
      * @param  string  $message  Isi pesan
      * @return array|mixed
      */
     public static function sendWhatsApp(array|string $targets, string $message)
     {
-        $token = env('FONNTE_TOKEN');
+        $token = Setting::get('FONNTE_TOKEN');
 
         if (empty($token)) {
-            Log::warning('Fonnte Token belum disetting di .env');
+            Log::warning('Fonnte Token belum disetting di database');
 
             return null;
         }

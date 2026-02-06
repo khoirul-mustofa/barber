@@ -25,7 +25,7 @@ class BookingResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['booking_code', 'name', 'phone'];
+        return ['booking_code', 'name', 'phone', 'service.name'];
     }
 
     public static function form(Schema $schema): Schema
