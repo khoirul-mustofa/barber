@@ -20,6 +20,8 @@ class TimeSlotResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Clock;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Management';
+
     protected static ?string $recordTitleAttribute = 'start_time';
 
     public static function form(Schema $schema): Schema

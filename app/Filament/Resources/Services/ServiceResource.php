@@ -20,6 +20,8 @@ class ServiceResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Briefcase;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Master Data';
+
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema

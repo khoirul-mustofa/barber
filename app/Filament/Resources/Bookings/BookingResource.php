@@ -21,6 +21,8 @@ class BookingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::CalendarDays;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Management';
+
     protected static ?string $recordTitleAttribute = 'booking_code';
 
     public static function getGloballySearchableAttributes(): array

@@ -3,28 +3,29 @@
     <div>
         <h3 class="text-lg font-medium text-emerald-950 dark:text-emerald-100 mb-4">Pilih Metode Pembayaran</h3>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            @foreach([
-                'bca' => ['name' => 'Transfer BCA', 'icon' => '🏦', 'desc' => '123-456-7890'],
-                'mandiri' => ['name' => 'Transfer Mandiri', 'icon' => '🏦', 'desc' => '987-654-3210'],
-                'bni' => ['name' => 'Transfer BNI', 'icon' => '📱', 'desc' => '123-456-7890'],
-                'dana' => ['name' => 'DANA', 'icon' => '📱', 'desc' => '0812-5662-6112'],
-                'qris' => ['name' => 'QRIS', 'icon' => '📸', 'desc' => 'Scan Barcode'],
-            ] as $key => $method)
-                <div wire:click="$set('payment_method', '{{ $key }}')"
+            @foreach($payment_methods as $method)
+                <div wire:click="$set('payment_method', '{{ $method->code->value }}')"
                      class="relative block p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group
-                {{ $payment_method === $key
+                {{ $payment_method === $method->code->value
                     ? 'border-yellow-500 bg-emerald-50 dark:bg-emerald-900/50 shadow-md ring-1 ring-yellow-500'
                     : 'border-emerald-100 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-600 bg-white dark:bg-emerald-900/30'
                 }}">
                     <div class="flex-shrink-0">
-                        <span class="text-2xl">{{ $method['icon'] }}</span>
+                         @if($method->icon && Storage::exists($method->icon))
+                            <img src="{{ Storage::url($method->icon) }}" class="h-8 w-8 object-contain">
+                         @else
+                            <span class="text-2xl">{{ $method->icon ?? '💳' }}</span>
+                         @endif
                     </div>
-                    <div class="flex-1">
-                        <p class="text-sm font-bold text-emerald-900 dark:text-white">{{ $method['name'] }}</p>
-                        <p class="text-xs text-emerald-600 dark:text-emerald-400">{{ $method['desc'] }}</p>
+                    <div class="flex-1 mt-2">
+                        <p class="text-sm font-bold text-emerald-900 dark:text-white">{{ $method->name }}</p>
+                        <p class="text-xs text-emerald-600 dark:text-emerald-400">{{ $method->description }}</p>
+                        @if($method->account_number)
+                            <p class="text-xs font-mono text-emerald-500 mt-1">{{ $method->account_number }}</p>
+                        @endif
                     </div>
                      {{-- Check circle --}}
-                    <div class="flex-shrink-0 text-emerald-500 {{ $payment_method === $key ? 'opacity-100' : 'opacity-0' }} transition-opacity">
+                    <div class="absolute top-4 right-4 text-emerald-500 {{ $payment_method === $method->code->value ? 'opacity-100' : 'opacity-0' }} transition-opacity">
                          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
                 </div>
@@ -34,15 +35,20 @@
     </div>
 
     <!-- QRIS Display -->
-    @if($payment_method === 'qris')
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-dashed border-2 border-emerald-500 text-center shadow-inner">
-            <h4 class="text-emerald-800 dark:text-emerald-400 font-bold mb-2">Scan QRIS</h4>
-            <div class="bg-white p-3 inline-block rounded-lg shadow-sm">
-                {{-- Just a placeholder or logic to show actual QR --}}
-                 <img src="{{ asset('images/qr-code.svg') }}" alt="QRIS" class="w-48 h-48 mx-auto">
+    @if($payment_method && $selectedMethod = $payment_methods->firstWhere('code.value', $payment_method))
+        @if($selectedMethod->code === \App\Enums\PaymentMethods::QRIS || $selectedMethod->image)
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-dashed border-2 border-emerald-500 text-center shadow-inner mt-6">
+                <h4 class="text-emerald-800 dark:text-emerald-400 font-bold mb-2">Scan QR Code</h4>
+                <div class="bg-white p-3 inline-block rounded-lg shadow-sm">
+                    @if($selectedMethod->image)
+                        <img src="{{ Storage::url($selectedMethod->image) }}" alt="QR Code" class="w-48 h-48 mx-auto object-contain">
+                    @else
+                        <img src="{{ asset('images/qr-code.svg') }}" alt="QRIS" class="w-48 h-48 mx-auto">
+                    @endif
+                </div>
+                 <p class="text-sm text-gray-500 mt-2">Scan untuk melakukan pembayaran.</p>
             </div>
-             <p class="text-sm text-gray-500 mt-2">Scan menggunakan GoPay, OVO, Dana, dll.</p>
-        </div>
+        @endif
     @endif
 
     <!-- Payment Proof Upload -->

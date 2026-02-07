@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Bookings\Schemas;
 
-use App\Enums\PaymentMethods;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -74,7 +73,13 @@ class BookingForm
                             ->required(),
                         Select::make('payment_method')
                             ->label('Metode Pembayaran')
-                            ->options(PaymentMethods::class)
+                            ->options(function () {
+                                return \App\Models\PaymentMethod::where('is_active', true)
+                                    ->get()
+                                    ->mapWithKeys(fn ($method) => [
+                                        $method->code->value => $method->name,
+                                    ]);
+                            })
                             ->native(false)
                             ->required(),
 

@@ -20,6 +20,8 @@ class SpecialPackageResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Star;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Master Data';
+
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema

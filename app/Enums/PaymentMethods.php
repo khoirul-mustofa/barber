@@ -15,4 +15,14 @@ enum PaymentMethods: string
     case QRIS = 'qris';
 
     case BRI = 'bri';
+
+    case GOPAY = 'gopay';
+
+    case OVO = 'ovo';
+
+    case SHOPEEPAY = 'shopeepay';
+
+    case LINKAJA = 'linkaja';
+
+    case CASH = 'cash';
 }

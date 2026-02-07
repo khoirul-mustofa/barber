@@ -6,6 +6,7 @@ use App\Models\Barber;
 use App\Models\Booking;
 use App\Models\Service;
 use App\Models\TimeSlot;
+use App\Models\PaymentMethod;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -138,7 +139,7 @@ class BookingWizard extends Component
             ]);
         } elseif ($this->step == 5) {
             $this->validate([
-                'payment_method' => ['required', \Illuminate\Validation\Rule::enum(\App\Enums\PaymentMethods::class)],
+                'payment_method' => ['required', 'exists:payment_methods,code'],
                 'payment_proof' => 'required|image|max:2048', // 2MB Max
             ]);
         }
@@ -231,6 +232,7 @@ class BookingWizard extends Component
         // Always pass services and barbers for the summary panel
         $data['services'] = Service::all();
         $data['barbers'] = Barber::all();
+        $data['payment_methods'] = PaymentMethod::where('is_active', true)->get();
 
         if ($this->step == 3) {
             // Get raw booking times and format them to H:i
