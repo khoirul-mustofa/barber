@@ -4,7 +4,7 @@
             <!-- Brand & Social -->
             <div class="space-y-4">
                 <a href="#home" class="flex items-center gap-3 group">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col" translate="no">
                         <span class="text-2xl font-bold tracking-wide text-green-500 font-heading">KUGA</span>
                         <span class="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-yellow-500">Barbershop</span>
                     </div>
