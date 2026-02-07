@@ -23,6 +23,8 @@ class BookingResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Management';
 
+    protected static ?int $navigationSort = 1;
+
     protected static ?string $recordTitleAttribute = 'booking_code';
 
     public static function getGloballySearchableAttributes(): array

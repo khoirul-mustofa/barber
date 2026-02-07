@@ -4,9 +4,9 @@ namespace App\Livewire;
 
 use App\Models\Barber;
 use App\Models\Booking;
+use App\Models\PaymentMethod;
 use App\Models\Service;
 use App\Models\TimeSlot;
-use App\Models\PaymentMethod;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -237,7 +237,6 @@ class BookingWizard extends Component
         if ($this->step == 3) {
             // Get raw booking times and format them to H:i
             $takenSlots = Booking::where('booking_date', $this->booking_date)
-                ->where('barber_id', $this->barber_id)
                 ->whereIn('status', [
                     'waiting_payment',
                     'waiting_verification',
@@ -258,10 +257,10 @@ class BookingWizard extends Component
             $data['timeSlots'] = $allSlots->map(function ($slot) use ($takenSlots, $isToday, $currentTime) {
                 // Determine format based on DB value, safe bet is substr or format
                 $slotTime = date('H:i', strtotime($slot->start_time));
-                
+
                 // Check if taken OR if it's today and the time has passed
                 $isPast = $isToday && $slotTime < $currentTime;
-                
+
                 $slot->is_taken = in_array($slotTime, $takenSlots) || $isPast;
                 $slot->display_time = $slotTime;
 

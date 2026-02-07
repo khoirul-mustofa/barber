@@ -20,7 +20,9 @@ class TimeSlotResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Clock;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Management';
+    protected static string|\UnitEnum|null $navigationGroup = 'Master Data';
+
+    protected static ?int $navigationSort = 4;
 
     protected static ?string $recordTitleAttribute = 'start_time';
 
