@@ -54,7 +54,7 @@
 
         {{-- Footer --}}
         <p class="mt-6 text-xs text-slate-600">
-            &copy; 2026 KUGA Barbershop. design by PALCUMPING.GL
+            &copy; 2026 KUGA Barbershop. Design by PALCUMPING.GL
         </p>
     </div>
 

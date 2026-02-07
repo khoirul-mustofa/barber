@@ -71,7 +71,7 @@
         </div>
 
         <div class="border-t border-emerald-900 pt-8 mt-8 text-center text-sm text-emerald-100/40">
-            <p>&copy; 2026 KUGA Barbershop. design by PALCUMPING.GL</p>
+            <p>&copy; 2026 KUGA Barbershop. Design by PALCUMPING.GL</p>
         </div>
     </div>
 </footer>
