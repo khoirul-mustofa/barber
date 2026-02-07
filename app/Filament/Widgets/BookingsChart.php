@@ -7,7 +7,9 @@ use Filament\Widgets\ChartWidget;
 class BookingsChart extends ChartWidget
 {
     protected static ?int $sort = 2;
-    protected int | string | array $columnSpan = 'full';
+
+    protected int|string|array $columnSpan = 'full';
+
     protected ?string $heading = 'Grafik Booking Bulanan';
 
     protected function getData(): array
@@ -19,7 +21,7 @@ class BookingsChart extends ChartWidget
             )
             ->perMonth()
             ->count();
- 
+
         return [
             'datasets' => [
                 [

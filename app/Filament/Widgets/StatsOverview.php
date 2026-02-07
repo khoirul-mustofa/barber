@@ -12,7 +12,7 @@ class StatsOverview extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Total Pendapatan', 'IDR '.number_format(\App\Models\Booking::where('status', 'completed')->sum('total_price'), 0, ',', '.'))
+            Stat::make('Total Pendapatan', 'IDR '.number_format(\App\Models\Booking::where('status', 'completed')->sum('dp_amount'), 0, ',', '.'))
                 ->description('Total pendapatan dari booking selesai')
                 ->descriptionIcon('heroicon-m-banknotes')
                 ->color('success'),
