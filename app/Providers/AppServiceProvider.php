@@ -23,13 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (! function_exists('setting')) {
-            Log::warning('Helper function "setting" is not defined. Please check if app/helpers.php is loaded.');
-        }
+        // if (! function_exists('setting')) {
+        //     Log::warning('Helper function "setting" is not defined. Please check if app/helpers.php is loaded.');
+        // }
         Booking::observe(BookingObserver::class);
 
-        if (app()->environment('production')) {
-            URL::forceScheme('https');
-        }
+        // if (app()->environment('production')) {
+        //     URL::forceScheme('https');
+        // }
     }
 }
