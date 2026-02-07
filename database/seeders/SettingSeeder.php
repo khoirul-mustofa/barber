@@ -15,13 +15,13 @@ class SettingSeeder extends Seeder
         $settings = [
             [
                 'key' => 'FONNTE_TOKEN',
-                'value' => env('FONNTE_TOKEN', ''),
+                'value' => env('FONNTE_TOKEN', 'xxxxx'),
                 'type' => 'string',
                 'description' => 'Fonnte API Token for WhatsApp integration',
             ],
             [
                 'key' => 'ADMIN_PHONE',
-                'value' => env('ADMIN_PHONE', ''),
+                'value' => env('ADMIN_PHONE', '0'),
                 'type' => 'string',
                 'description' => 'Admin phone number for notifications',
             ],
