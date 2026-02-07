@@ -44,14 +44,12 @@ class PaymentMethodForm
                     ->image()
                     ->directory('payment-icons')
                     ->disk('public')
-                    ->preserveFilenames()
                     ->helperText('Logo kecil bank/e-wallet. Format: PNG (latar transparan). Rekomendasi ukuran: 100x100px atau rasio 1:1.'),
                 FileUpload::make('image') // QRIS or Logo
                     ->label('QRIS Image')
                     ->image()
                     ->disk('public')
                     ->directory('payment-images')
-                    ->preserveFilenames()
                     ->helperText('Upload gambar QRIS. Format: JPG/PNG. Pastikan gambar jelas agar bisa discan. Maksimal 2MB.'),
                 Toggle::make('is_active')
                     ->required()
