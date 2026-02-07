@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ServiceCategoriesSeeder::class,
             SettingSeeder::class,
             SpecialPackageSeeder::class,
-
+            PaymentMethodSeeder::class,
         ]);
     }
 }
