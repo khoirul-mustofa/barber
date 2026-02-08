@@ -270,6 +270,12 @@
                             <span class="status-pill status-confirmed">Terverifikasi</span>
                         @elseif($booking->status->value == 'cancelled')
                             <span class="status-pill status-cancelled">Dibatalkan</span>
+                        @elseif($booking->status->value == 'rejected')
+                            <span class="status-pill status-cancelled">Ditolak</span>
+                        @elseif($booking->status->value == 'completed')
+                            <span class="status-pill status-cancelled">Selesai</span>
+                        @elseif($booking->status->value == 'expired')
+                            <span class="status-pill status-cancelled">Kadaluarsa</span>
                         @else
                              <span class="status-pill status-waiting">{{ $booking->status->value }}</span>
                         @endif

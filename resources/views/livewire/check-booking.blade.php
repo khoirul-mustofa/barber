@@ -61,10 +61,12 @@
                                  <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase tracking-wide">Menunggu Verifikasi</span>
                             @elseif($booking->status->value == 'confirmed')
                                  <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase tracking-wide">Dikonfirmasi</span>
+                            @elseif($booking->status->value == 'rejected')
+                                 <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wide">Ditolak</span>
                             @elseif($booking->status->value == 'completed')
                                  <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-bold uppercase tracking-wide">Selesai</span>
-                            @elseif($booking->status->value == 'cancelled')
-                                 <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wide">Dibatalkan</span>
+                            @elseif($booking->status->value == 'expired')
+                                 <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase tracking-wide">Kadaluarsa</span>
                             @endif
                         </div>
                     </div>
