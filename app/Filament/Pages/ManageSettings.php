@@ -6,6 +6,7 @@ use App\Models\Setting;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -41,10 +42,20 @@ class ManageSettings extends Page implements HasSchemas
      */
     public function mount(): void
     {
-        $this->schema->fill([
-            'FONNTE_TOKEN' => setting('FONNTE_TOKEN'),
-            'ADMIN_PHONE' => setting('ADMIN_PHONE'),
-        ]);
+        $holidayDays = Setting::get('HOLIDAY_DAYS', []);
+
+        // If it's a comma-separated string (legacy), convert to array
+        if (is_string($holidayDays)) {
+            $holidayDays = array_filter(explode(',', $holidayDays), fn ($v) => $v !== '' && $v !== null);
+        }
+
+        $this->data = [
+            'FONNTE_TOKEN' => Setting::get('FONNTE_TOKEN'),
+            'ADMIN_PHONE' => Setting::get('ADMIN_PHONE'),
+            'HOLIDAY_DAYS' => array_values((array) $holidayDays),
+        ];
+
+        $this->schema->fill($this->data);
     }
 
     /**
@@ -89,8 +100,26 @@ class ManageSettings extends Page implements HasSchemas
                                     };
                                 },
                             ]),
-
                     ]),
+
+                Section::make('Holiday Settings')
+                    ->description('Pilih hari libur mingguan')
+                    ->schema([
+                        Select::make('HOLIDAY_DAYS')
+                            ->label('Hari Libur Rutin')
+                            ->multiple()
+                            ->options([
+                                '0' => 'Minggu',
+                                '1' => 'Senin',
+                                '2' => 'Selasa',
+                                '3' => 'Rabu',
+                                '4' => 'Kamis',
+                                '5' => 'Jumat',
+                                '6' => 'Sabtu',
+                            ])
+                            ->helperText('Pilih satu atau lebih hari di mana toko tutup rutin.'),
+                    ]),
+
             ]);
     }
 
@@ -113,7 +142,9 @@ class ManageSettings extends Page implements HasSchemas
     public function save(): void
     {
         try {
-            foreach ($this->schema->getState() as $key => $value) {
+            $state = $this->schema->getState();
+
+            foreach ($state as $key => $value) {
                 Setting::set($key, $value);
             }
 

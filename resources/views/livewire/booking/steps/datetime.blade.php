@@ -42,6 +42,16 @@
                         </button>
                     @endforeach
                 </div>
+            @elseif(isset($holiday_description))
+                <div class="text-center py-10 bg-red-50 dark:bg-red-900/20 rounded-xl border-2 border-dashed border-red-200 dark:border-red-800">
+                    <div class="flex flex-col items-center">
+                        <svg class="h-12 w-12 text-red-500 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="text-lg font-bold text-red-800 dark:text-red-200">Mohon Maaf, Kami Tutup</h3>
+                        <p class="text-red-600 dark:text-red-400 mt-1">{{ $holiday_description }}</p>
+                    </div>
+                </div>
             @else
                 <div class="text-center py-8 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-dashed border-emerald-200 dark:border-emerald-700">
                     <p class="text-emerald-500 dark:text-emerald-400">Tidak ada jadwal tersedia untuk tanggal ini.</p>

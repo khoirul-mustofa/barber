@@ -4,8 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Barber;
 use App\Models\Booking;
+use App\Models\Holiday;
 use App\Models\PaymentMethod;
 use App\Models\Service;
+use App\Models\Setting;
 use App\Models\TimeSlot;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
@@ -115,6 +117,27 @@ class BookingWizard extends Component
                 'booking_time' => [
                     'required',
                     function ($attribute, $value, $fail) {
+                        // Check if specific holiday date
+                        $isHoliday = Holiday::where('date', $this->booking_date)->exists();
+                        if ($isHoliday) {
+                            $fail('Maaf, tanggal ini adalah hari libur.');
+
+                            return;
+                        }
+
+                        // Check if recurring holiday day
+            $holidayDays = Setting::get('HOLIDAY_DAYS', []);
+            if (is_string($holidayDays)) {
+                $holidayDays = explode(',', $holidayDays);
+            }
+            $holidayDays = (array) $holidayDays;
+            
+            $dayOfWeek = date('w', strtotime($this->booking_date)); // 0 (Sunday) to 6 (Saturday)
+            if (in_array((string) $dayOfWeek, $holidayDays)) {
+                $fail('Maaf, kami libur pada hari ini.');
+                return;
+            }
+
                         $isTaken = Booking::where('booking_date', $this->booking_date)
                             ->where('barber_id', $this->barber_id)
                             ->whereIn('status', [
@@ -249,6 +272,30 @@ class BookingWizard extends Component
                 ->toArray();
 
             $allSlots = TimeSlot::where('is_active', true)->orderBy('start_time')->get();
+
+            // Check if holiday
+            $isHoliday = Holiday::where('date', $this->booking_date)->exists();
+            
+            $holidayDays = Setting::get('HOLIDAY_DAYS', []);
+            if (is_string($holidayDays)) {
+                $holidayDays = explode(',', $holidayDays);
+            }
+            $holidayDays = (array) $holidayDays;
+
+            $dayOfWeek = date('w', strtotime($this->booking_date));
+            $isHolidayDay = in_array((string) $dayOfWeek, $holidayDays);
+
+            $data['holiday_description'] = null;
+
+            if ($isHoliday) {
+                $holidayModel = Holiday::where('date', $this->booking_date)->first();
+                $data['holiday_description'] = $holidayModel ? $holidayModel->description ?? 'Hari Libur' : 'Hari Libur';
+                $allSlots = collect();
+            } elseif ($isHolidayDay) {
+                $days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                $data['holiday_description'] = 'Hari ' . $days[$dayOfWeek] . ' kami tutup rutin.';
+                $allSlots = collect();
+            }
 
             // Map slots to include is_taken status
             $isToday = $this->booking_date === now()->format('Y-m-d');

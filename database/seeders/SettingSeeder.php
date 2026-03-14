@@ -25,6 +25,12 @@ class SettingSeeder extends Seeder
                 'type' => 'string',
                 'description' => 'Admin phone number for notifications',
             ],
+            [
+                'key' => 'HOLIDAY_DAYS',
+                'value' => '[]',
+                'type' => 'json',
+                'description' => 'Hari libur rutin mingguan',
+            ],
         ];
 
         foreach ($settings as $setting) {

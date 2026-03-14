@@ -15,6 +15,13 @@ class Setting extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $casts = [
+        'value' => 'string',
+    ];
+
+    /**
      * Cache key for settings
      */
     const CACHE_KEY = 'app_settings';
@@ -38,9 +45,8 @@ class Setting extends Model
 
     /**
      * Get a setting value by key
-     * 
-     * @param string $key
-     * @param mixed $default
+     *
+     * @param  mixed  $default
      * @return mixed
      */
     public static function get(string $key, $default = null)
@@ -49,35 +55,49 @@ class Setting extends Model
             return self::all()->pluck('value', 'key')->toArray();
         });
 
-        return $settings[$key] ?? $default;
+        $value = $settings[$key] ?? $default;
+
+        // Try to decode if looks like JSON
+        if (is_string($value) && (str_starts_with($value, '[') || str_starts_with($value, '{'))) {
+            $decoded = json_decode($value, true);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                return $decoded;
+            }
+        }
+
+        return $value;
     }
 
     /**
      * Set a setting value
-     * 
-     * @param string $key
-     * @param mixed $value
-     * @param string $type
-     * @param string|null $description
-     * @return bool
+     *
+     * @param  mixed  $value
      */
     public static function set(string $key, $value, string $type = 'string', ?string $description = null): bool
     {
         $setting = self::firstOrNew(['key' => $key]);
-        $setting->value = $value;
+
+        if (is_array($value)) {
+            $value = json_encode(array_values(array_unique(array_filter($value, fn ($v) => $v !== '' && $v !== null))));
+            $type = 'json';
+        }
+
+        $setting->value = (string) ($value ?? '');
         $setting->type = $type;
         if ($description) {
             $setting->description = $description;
         }
-        
-        return $setting->save();
+
+        $result = $setting->save();
+
+        // Clear cache explicitly
+        Cache::forget(self::CACHE_KEY);
+
+        return $result;
     }
 
     /**
      * Check if a setting exists
-     * 
-     * @param string $key
-     * @return bool
      */
     public static function has(string $key): bool
     {
