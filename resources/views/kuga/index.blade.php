@@ -82,7 +82,7 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="tentang" class="py-24 relative min-h-screen flex items-center bg-gray-900 bg-cover bg-center bg-fixed"
+    <section id="tentang" class="py-24 relative min-h-screen flex items-center bg-gray-900 bg-cover bg-center"
         style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ asset('images/team-photo.jpg') }}');">
         <div class="max-w-4xl mx-auto px-6 text-center text-white relative z-10">
             <h2 class="text-4xl sm:text-5xl font-bold mb-8 font-heading">
