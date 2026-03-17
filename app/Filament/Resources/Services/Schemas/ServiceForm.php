@@ -51,14 +51,20 @@ class ServiceForm
                     ->rows(3)
                     ->required(),
                 DateTimePicker::make('start_date')
+                    ->label('Tanggal Mulai')
+                    ->helperText('Kapan layanan ini mulai bisa dipesan oleh pelanggan.')
                     ->required()
                     ->native(false)
                     ->default(now()),
                 DateTimePicker::make('end_date')
+                    ->label('Tanggal Berakhir')
+                    ->helperText('Kapan layanan ini otomatis berhenti ditawarkan (tidak bisa dipesan lagi).')
                     ->required()
                     ->native(false)
                     ->default(now()->addYear()),
                 Toggle::make('is_active')
+                    ->label('Status Aktif')
+                    ->helperText('Gunakan ini jika ingin menyembunyikan layanan secara manual dengan cepat.')
                     ->required()
                     ->default(true),
             ]);
