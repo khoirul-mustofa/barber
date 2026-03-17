@@ -20,6 +20,8 @@ class ServiceSeeder extends Seeder
                 'description' => 'Potong rambut dengan teknik profesional + keramas + hair tonic + hot towel + styling',
                 'emoji' => '✂️',
                 'category_id' => 1,
+                'start_date' => now(),
+                'end_date' => now()->addYear(),
             ],
             [
                 'name' => 'Premium Styling',
@@ -28,7 +30,8 @@ class ServiceSeeder extends Seeder
                 'description' => 'Potong rambut detail + konsultasi gaya + premium hair product + head massage',
                 'emoji' => '💈',
                 'category_id' => 1,
-
+                'start_date' => now(),
+                'end_date' => now()->addYear(),
             ],
             [
                 'name' => 'Beard Grooming',
@@ -37,7 +40,8 @@ class ServiceSeeder extends Seeder
                 'description' => 'Perawatan jenggot & kumis + razor shave + premium beard oil application',
                 'emoji' => '🪒',
                 'category_id' => 1,
-
+                'start_date' => now(),
+                'end_date' => now()->addYear(),
             ],
             [
                 'name' => 'Hair Treatment',
@@ -46,6 +50,8 @@ class ServiceSeeder extends Seeder
                 'description' => 'Hair mask premium untuk kesehatan akar rambut, ketombe, dan rambut rontok',
                 'emoji' => '✨',
                 'category_id' => 2,
+                'start_date' => now(),
+                'end_date' => now()->addYear(),
             ],
             [
                 'name' => 'Hair Coloring',
@@ -54,7 +60,8 @@ class ServiceSeeder extends Seeder
                 'description' => 'Pewarnaan rambut profesional (Natural, Fashion, or Bold Cover)',
                 'emoji' => '🎨',
                 'category_id' => 2,
-
+                'start_date' => now(),
+                'end_date' => now()->addYear(),
             ],
             [
                 'name' => 'Head Massage',
@@ -63,7 +70,8 @@ class ServiceSeeder extends Seeder
                 'description' => 'Pijat kepala, leher, dan bahu intensif untuk relaksasi total',
                 'emoji' => '💆',
                 'category_id' => 2,
-
+                'start_date' => now(),
+                'end_date' => now()->addYear(),
             ],
         ];
 

@@ -15,14 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('price');
-            // lama waktu pelayanan
             $table->integer('duration');
-            // Short Description
             $table->string('description');
-            // emoji
             $table->string('emoji');
-            // relasi category
             $table->unsignedBigInteger('category_id');
+
+            // new feature
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

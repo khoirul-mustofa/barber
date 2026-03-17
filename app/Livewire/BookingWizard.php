@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\Holiday;
 use App\Models\PaymentMethod;
 use App\Models\Service;
+use App\Models\ServiceSlotConfig;
 use App\Models\Setting;
 use App\Models\TimeSlot;
 use Illuminate\Support\Str;
@@ -253,7 +254,10 @@ class BookingWizard extends Component
         $data = [];
 
         // Always pass services and barbers for the summary panel
-        $data['services'] = Service::all();
+        $data['services'] = Service::where('is_active', true)
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->get();
         $data['barbers'] = Barber::all();
         $data['payment_methods'] = PaymentMethod::where('is_active', true)->get();
 
@@ -293,8 +297,24 @@ class BookingWizard extends Component
                 $allSlots = collect();
             } elseif ($isHolidayDay) {
                 $days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                $data['holiday_description'] = 'Hari ' . $days[$dayOfWeek] . ' kami tutup rutin.';
+                $data['holiday_description'] = 'Hari '.$days[$dayOfWeek].' kami tutup rutin.';
                 $allSlots = collect();
+            }
+
+            // Check for service-specific time slot configurations
+            $serviceConfig = ServiceSlotConfig::where('service_id', $this->service_id)
+                ->where('date', $this->booking_date)
+                ->first();
+
+            if ($serviceConfig) {
+                $startTime = date('H:i', strtotime($serviceConfig->start_time));
+                $endTime = date('H:i', strtotime($serviceConfig->end_time));
+
+                $allSlots = $allSlots->filter(function ($slot) use ($startTime, $endTime) {
+                    $slotTime = date('H:i', strtotime($slot->start_time));
+
+                    return $slotTime >= $startTime && $slotTime <= $endTime;
+                });
             }
 
             // Map slots to include is_taken status

@@ -20,4 +20,9 @@ class Service extends Model
     {
         return $this->belongsTo(ServiceCategories::class);
     }
+
+    public function slotConfigs()
+    {
+        return $this->hasMany(ServiceSlotConfig::class);
+    }
 }

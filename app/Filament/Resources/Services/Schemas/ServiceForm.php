@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\Services\Schemas;
 
 use App\Models\ServiceCategories;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class ServiceForm
@@ -48,6 +50,17 @@ class ServiceForm
                     ->label('Deskripsi Singkat')
                     ->rows(3)
                     ->required(),
+                DateTimePicker::make('start_date')
+                    ->required()
+                    ->native(false)
+                    ->default(now()),
+                DateTimePicker::make('end_date')
+                    ->required()
+                    ->native(false)
+                    ->default(now()->addYear()),
+                Toggle::make('is_active')
+                    ->required()
+                    ->default(true),
             ]);
     }
 }

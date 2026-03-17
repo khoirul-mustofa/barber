@@ -1,8 +1,8 @@
 <div class="space-y-6 animate-fade-in-up">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
         @foreach($services as $service)
-            <div wire:click="selectService({{ $service->id }}, {{ $service->price }})"
-                 class="relative block p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group
+            <div wire:click="selectService({{ $service->id }}, {{ $service->price }} )"
+                 class="relative block p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group disable
                 {{ $service_id == $service->id 
                     ? 'border-yellow-500 bg-emerald-50 dark:bg-emerald-900/50 shadow-md ring-1 ring-yellow-500' 
                     : 'border-emerald-100 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-600 bg-white dark:bg-emerald-900/30' 
