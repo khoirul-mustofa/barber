@@ -127,17 +127,18 @@ class BookingWizard extends Component
                         }
 
                         // Check if recurring holiday day
-            $holidayDays = Setting::get('HOLIDAY_DAYS', []);
-            if (is_string($holidayDays)) {
-                $holidayDays = explode(',', $holidayDays);
-            }
-            $holidayDays = (array) $holidayDays;
-            
-            $dayOfWeek = date('w', strtotime($this->booking_date)); // 0 (Sunday) to 6 (Saturday)
-            if (in_array((string) $dayOfWeek, $holidayDays)) {
-                $fail('Maaf, kami libur pada hari ini.');
-                return;
-            }
+                        $holidayDays = Setting::get('HOLIDAY_DAYS', []);
+                        if (is_string($holidayDays)) {
+                            $holidayDays = explode(',', $holidayDays);
+                        }
+                        $holidayDays = (array) $holidayDays;
+
+                        $dayOfWeek = date('w', strtotime($this->booking_date)); // 0 (Sunday) to 6 (Saturday)
+                        if (in_array((string) $dayOfWeek, $holidayDays)) {
+                            $fail('Maaf, kami libur pada hari ini.');
+
+                            return;
+                        }
 
                         $isTaken = Booking::where('booking_date', $this->booking_date)
                             ->where('barber_id', $this->barber_id)
@@ -264,6 +265,7 @@ class BookingWizard extends Component
         if ($this->step == 3) {
             // Get raw booking times and format them to H:i
             $takenSlots = Booking::where('booking_date', $this->booking_date)
+                ->where('barber_id', $this->barber_id)
                 ->whereIn('status', [
                     'waiting_payment',
                     'waiting_verification',
@@ -279,7 +281,7 @@ class BookingWizard extends Component
 
             // Check if holiday
             $isHoliday = Holiday::where('date', $this->booking_date)->exists();
-            
+
             $holidayDays = Setting::get('HOLIDAY_DAYS', []);
             if (is_string($holidayDays)) {
                 $holidayDays = explode(',', $holidayDays);
