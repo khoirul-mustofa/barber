@@ -8,6 +8,7 @@
         content="KUGA Barbershop - Barbershop modern dengan layanan premium untuk pria. Potong rambut, styling, grooming terbaik.">
     <meta name="keywords" content="barbershop, potong rambut, grooming, KUGA, barbershop modern">
     <title>KUGA Barbershop - Life Begins After Haircut</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
